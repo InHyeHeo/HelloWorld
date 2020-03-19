@@ -34,6 +34,7 @@
 	<mybatis-spring:scan
 		base-package="org.zerock.mapper" />
 
+	<!-- mybatis의 mapper 인터페이스 처리 -->
 
 
 
