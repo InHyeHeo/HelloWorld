@@ -10,4 +10,48 @@
 			select * from tbl_board where bno<6
 			]]>
 		</select>
+		
+		
+		
+		<!-- Mapper인터페이스에 create처리 메소드 추가 후 설정 -->
+		<insert id="insert">
+		insert into tbl_board (bno, title, content, writer)
+		values(seq_board.nextval, #{title}, #{content}, #{writer})
+		</insert>
+		
+		<insert id="insertSelectKey">
+			<selectKey keyProperty="bno" order="BEFORE"
+			resultType="long">
+			select seq_board.nextval from dual
+			</selectKey>
+			
+			insert into tbl_board (bno, title, content, writer)
+			values(#{bno}, #{title}, #{content}, #{writer})
+		</insert>
+		
+		
+		
+		<!-- Mapper인터페이스에 read처리 메소드 추가 후 설정 -->
+		<select id="read" resultType="org.zerock.domain.BoardVO">
+		select * from tbl_board where bno = #{bno}
+		</select>
+		
+		
+		
+		<!-- Mapper인터페이스에 delete처리 메소드 추가 후 설정 -->
+		<select id="delete">
+		delete from tbl_board where bno = #{bno}
+		</select>
+		
+		
+		
+		<!-- Mapper인터페이스에 update처리 메소드 추가 후 설정 -->
+		<!-- updateDate칼럼은 최종 수정시간을 나타내기 때문에 현재 시간으로 변경해주고,
+		regdate칼럼은 최초 생성시간임으로 건드리지 않는다 -->
+		<update id="update">
+		update tbl_board
+		set title=#{title}, content=#{content}, writer=#{writer}, updateDate=sysdate 
+		where bno=#{bno}
+		</update>
+		
 	</mapper>
