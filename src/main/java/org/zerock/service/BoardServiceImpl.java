@@ -21,9 +21,11 @@ public class BoardServiceImpl implements BoardService{
 								// 1) @Autowired로 직접 설정
 								// 2) @Setter이용(lombok)
 						
+	
 	@Override
-	public void register(BoardVO board) {
-		// TODO Auto-generated method stub
+	public void register(BoardVO board) { //BoardVO타입의 객체를 BoardMapper를 통해 처리
+		log.info("register......."+board);
+		mapper.insertSelectKey(board); //나중에 생성된 게시문읠 번호 확인
 		
 	}
 
