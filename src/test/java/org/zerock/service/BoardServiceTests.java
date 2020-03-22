@@ -7,6 +7,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.zerock.controller.BoardControllerTests;
 import org.zerock.domain.BoardVO;
 
 import lombok.Setter;
@@ -21,7 +24,6 @@ public class BoardServiceTests {
 	private BoardService service;
 	
 	
-	
 	@Test
 	public void testExit() { //BoardService객체가 생성되고, BoardMapper가 주입되었는지 확인하는 메서드.
 		log.info(service); //org.zerock.service.BoardServiceImpl@74960bfa
@@ -32,15 +34,10 @@ public class BoardServiceTests {
 	
 	@Test
 	public void testRegister() { //등록작업 테스트
-		BoardVO board = new BoardVO();
-		board.setTitle("새로 작성하는 글");
-		board.setContent("새로 작성하는 내용");
-		board.setWriter("newbie");
 		
-		service.register(board);
-		
-		log.info("생성된 게시물의 번호: "+board.getBno());
 	}
+	
+	
 	
 	
 	
@@ -70,7 +67,6 @@ public class BoardServiceTests {
 		if(board == null) {
 			return;
 		}
-		
 		board.setTitle("제목 수정할게요.");
 		log.info("MODIFY RESULT"+service.modify(board));
 	}
