@@ -31,7 +31,7 @@ public class BoardServiceTests {
 	
 	
 	@Test
-	public void testRegister() {
+	public void testRegister() { //등록작업 테스트
 		BoardVO board = new BoardVO();
 		board.setTitle("새로 작성하는 글");
 		board.setContent("새로 작성하는 내용");
@@ -41,4 +41,40 @@ public class BoardServiceTests {
 		
 		log.info("생성된 게시물의 번호: "+board.getBno());
 	}
+	
+	
+	
+	@Test
+	public void testGetList() { //목록작업 테스트
+		service.getList().forEach(board -> log.info(board));
+	}
+	
+	
+	
+	@Test
+	public void testGet() { //조회작업 테스트
+		log.info(service.get(1L));
+	}
+	
+	
+	
+	@Test
+	public void testDelete() {
+		log.info(service.remove(5L));
+	}
+	
+	@Test
+	public void testUpdate() {
+		BoardVO board = service.get(1L);
+		
+		if(board == null) {
+			return;
+		}
+		
+		board.setTitle("제목 수정할게요.");
+		log.info("MODIFY RESULT"+service.modify(board));
+	}
+	
+	
+	
 }
