@@ -19,7 +19,7 @@
                         <div class="panel-heading">Board List Page</div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <table width="100%" class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>#번호</th>
@@ -29,6 +29,17 @@
                                         <th>수정일</th>
                                     </tr>
                                 </thead>
+                                
+                                <!-- MODEL에 담긴 데이터 출력 -->
+                                <c:forEach items="${list}" var="board">
+                                	<tr>
+                                		<td><c:out value="${board.bno }" /></td>
+                                		<td><c:out value="${board.title }" /></td>
+                                		<td><c:out value="${board.writer }" /></td>
+                                		<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}" /></td>
+										<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.updateDate}" /></td>
+                                	</tr>
+                                </c:forEach>
                                 
                             </table>
                         </div>

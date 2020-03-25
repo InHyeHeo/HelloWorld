@@ -65,6 +65,15 @@ public class BoardController {
 		return "redirect:/board/list";
 		}
 	
-
+	
+	
+	
+	//게시물 등록 작업은 post방식이지만,
+	//화면에서 입력을 받아야 하므로 get방식으로
+	//입력 페이지를 볼 수 있도록 메서드 추가
+	@GetMapping("/register") 
+	public void register() {
+		
+	}
 	
 }
