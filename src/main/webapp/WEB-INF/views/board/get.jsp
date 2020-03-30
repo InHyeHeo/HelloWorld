@@ -21,29 +21,38 @@
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                         
-                        <form role="form" action="/board/register" method="post">
+                        
                         	<div class="form-group">
-                        		<label>제목</label>
-                        		<input class="form-control" name='title'>
+                        		<label>번호</label> <input class="form-control" name='bno'
+                        		value='<c:out value="${board.bno }"/>' readonly="readonly">
                         	</div>
                         	
                         	<div class="form-group">
-                        		<label>내용</label>
-                        		<textarea class="form-control" row="3" name='content'>
-                        		</textarea>
+                        		<label>제목</label> <input class="form-control" name='title'
+                        		value='<c:out value="${board.title }"/>' readonly="readonly">
                         	</div>
                         	
                         	<div class="form-group">
-                        		<label>작성자</label>
-                        		<input class="form-control" name='writer'>
+                        		<label>내용</label> <textarea class="form-control" row="3" name='content'
+                        		readonly="readonly"> <c:out value="${board.content }"/></textarea>
                         	</div>
-                        	<button type="submit" class="btn btn-default">
-                        	등록하기
-                        	</button>
-                        	<button type="reset" class="btn btn-default">
-                        	취소하기
-                        	</button>            	
-                        </form>
+                        	
+                        	<div class="form-group">
+                        		<label>작성자</label> <input class="form-control" name='writer'
+                        		value='<c:out value="${board.writer }"/>' readonly="readonly">
+                        	</div>
+                        	
+                        	
+                        	<button data-oper='modify' 
+                        			class="btn btn-default"
+                        			onclick="location.href='/board/modify?bno=<c:out value="${board.bno}"/>'">
+                        	수정</button>
+                        	
+                        	<button data-oper='list' 
+                        			class="btn btn-info"
+                        			onclick="location.href='/board/list'"> 			
+                        			리스트</button>
+                        	
                         
                         </div>
                         <!-- end panel-body -->
@@ -55,7 +64,7 @@
                         </div>
                         
                         <!-- /.row -->
-
+                        
 <%@include file="../includes/footer.jsp" %>
                         
                         
